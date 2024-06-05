@@ -1,0 +1,77 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+            <div  class="text-center">
+                <img src="../../../assets/logo.png" width="80%" height="150" alt="Logo" class="centered-logo">
+            </div>
+          <div class="card-header text-center bg-primary text-white">
+            
+          <marquee>  <h3>S'inscrire</h3></marquee>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="nom">Nom</label>
+                  <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="user.nom" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="prenom">Prénom</label>
+                  <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="user.prenom" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required>
+              </div>
+              <div class="form-group">
+                <label for="telephonePortable">Téléphone portable</label>
+                <input type="text" class="form-control" id="telephonePortable" name="telephonePortable" [(ngModel)]="user.telephonePortable" required>
+              </div>
+              <div class="form-group">
+                <label for="telephoneFixe">Téléphone fixe</label>
+                <input type="text" class="form-control" id="telephoneFixe" name="telephoneFixe" [(ngModel)]="user.telephoneFixe" required>
+              </div>
+              <div class="form-group">
+                <label for="ville">Ville</label>
+                <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="user.adresse.ville" required>
+              </div>
+              <div class="form-group">
+                <label for="codePostal">Code postal</label>
+                <input type="text" class="form-control" id="codePostal" name="codePostal" [(ngModel)]="user.adresse.codePostal" required>
+              </div>
+              <div class="form-group">
+                <label for="adresseDetail">Adresse détaillée</label>
+                <input type="text" class="form-control" id="adresseDetail" name="adresseDetail" [(ngModel)]="user.adresse.adresseDetail" required>
+              </div>
+              <div class="form-group">
+                <label for="genre">Genre</label>
+                <select class="form-control" id="genre" name="genre" [(ngModel)]="user.genre" required>
+                  <option value="HOMME">Homme</option>
+                  <option value="FEMME">Femme</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="role">Rôle</label>
+                <select class="form-control" id="role" name="role" [(ngModel)]="user.role" required>
+                  <option value="ADMIN">Admin</option>
+                  <option value="Gestionnaire">Gestionnaire</option>
+                  <option value="Directeur">Directeur</option>
+                </select>
+              </div>
+              <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+              <a routerLink="/auth/login" class="btn btn-link d-block text-center mt-2">Se connecter</a>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

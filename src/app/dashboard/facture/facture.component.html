@@ -1,0 +1,70 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center">
+            <h3>Historique des Factures</h3>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-primary mb-3" (click)="openModal()">Ajouter une Facture</button>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre de Factures</th>
+                  <th>Date de Facturation</th>
+                  <th>Montant</th>
+                  <th>RIB</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let facture of factures">
+                  <td>{{ facture.id }}</td>
+                  <td>{{ facture.nombreFacture }}</td>
+                  <td>{{ facture.dateFacturation | date: 'short' }}</td>
+                  <td>{{ facture.montantFacturation }}</td>
+                  <td>{{ facture.rib }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal -->
+    <div id="factureModal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ajouter une Facture</h5>
+            <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="nombreFacture">Nombre de Factures</label>
+                <input type="number" class="form-control" id="nombreFacture" [(ngModel)]="facture.nombreFacture" name="nombreFacture" required>
+              </div>
+              <div class="form-group">
+                <label for="dateFacturation">Date de Facturation</label>
+                <input type="date" class="form-control" id="dateFacturation" [(ngModel)]="facture.dateFacturation" name="dateFacturation" required>
+              </div>
+              <div class="form-group">
+                <label for="montantFacturation">Montant</label>
+                <input type="number" class="form-control" id="montantFacturation" [(ngModel)]="facture.montantFacturation" name="montantFacturation" required>
+              </div>
+              <div class="form-group">
+                <label for="rib">RIB</label>
+                <input type="text" class="form-control" id="rib" [(ngModel)]="facture.rib" name="rib" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center">
+            <h3>Créer une Demande</h3>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="justificatif">Justificatif</label>
+                <input type="text" class="form-control" id="justificatif" [(ngModel)]="demande.justificatif" name="justificatif" required>
+              </div>
+              <div class="form-group">
+                <label for="commentaire">Commentaire</label>
+                <textarea class="form-control" id="commentaire" [(ngModel)]="demande.commentaire" name="commentaire" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row mt-5">
+      <div class="col-md-10 offset-md-1">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center">
+            <h3>Historique des Demandes</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Justificatif</th>
+                  <th>Commentaire</th>
+                  <th>Date de Création</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let demande of demandes">
+                  <td>{{ demande.id }}</td>
+                  <td>{{ demande.justificatif }}</td>
+                  <td>{{ demande.commentaire }}</td>
+                  <td>{{ demande.createAt | date: 'short' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

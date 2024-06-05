@@ -1,0 +1,80 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-3">
+      <h3>Mes Conventions</h3>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#addConventionModal">Ajouter une Convention</button>
+    </div>
+    <div *ngIf="currentUser?.conventions; else noConventions">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre d'Enregistrements</th>
+            <th>Date d'Inscription</th>
+            <th>Date de Début</th>
+            <th>Date de Fin</th>
+            <th>Matériel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let convention of currentUser.conventions">
+            <td>{{ convention.nombreEnregistrement }}</td>
+            <td>{{ convention.dateInscription | date }}</td>
+            <td>{{ convention.dateDebutConvention | date }}</td>
+            <td>{{ convention.dateFinConvention | date }}</td>
+            <td>{{ convention.materiel }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noConventions>
+      <p>Aucune convention trouvée.</p>
+    </ng-template>
+  
+    <!-- Add Convention Modal -->
+    <div class="modal fade" id="addConventionModal" tabindex="-1" role="dialog" aria-labelledby="addConventionModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addConventionModalLabel">Ajouter une Convention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #conventionForm="ngForm" (ngSubmit)="onSubmit(conventionForm)">
+              <div class="form-group">
+                <label for="nombreEnregistrement">Nombre d'Enregistrements</label>
+                <input type="number" class="form-control" id="nombreEnregistrement" name="nombreEnregistrement" [(ngModel)]="newConvention.nombreEnregistrement" required>
+              </div>
+              <div class="form-group">
+                <label for="dateInscription">Date d'Inscription</label>
+                <input type="date" class="form-control" id="dateInscription" name="dateInscription" [(ngModel)]="newConvention.dateInscription" required>
+              </div>
+              <div class="form-group">
+                <label for="dateDebutConvention">Date de Début</label>
+                <input type="date" class="form-control" id="dateDebutConvention" name="dateDebutConvention" [(ngModel)]="newConvention.dateDebutConvention" required>
+              </div>
+              <div class="form-group">
+                <label for="dateFinConvention">Date de Fin</label>
+                <input type="date" class="form-control" id="dateFinConvention" name="dateFinConvention" [(ngModel)]="newConvention.dateFinConvention" required>
+              </div>
+              <div class="form-group">
+                <label for="materiel">Matériel</label>
+                <select class="form-control" id="materiel" name="materiel" [(ngModel)]="newConvention.materiel" required>
+                  <option value="RADIOGRAPHIE">Radiographie</option>
+                  <option value="ECHOGRAPHIE">Échographie</option>
+                  <option value="SCANNER">Scanner</option>
+                  <option value="IRM">IRM</option>
+                  <option value="MAMMOGRAPHIE">Mammographie</option>
+                  <option value="VEHICULE">Véhicule</option>
+                  <option value="STOCK">Stock</option>
+                  <option value="BUREAUTIQUE">Bureautique</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
